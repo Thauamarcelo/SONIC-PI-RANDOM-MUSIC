@@ -1,0 +1,93 @@
+# 🎵 The Line — Twenty One Pilots (recriação no Sonic Pi)
+# Autor: Thauã Marcelo
+# BPM = 80 (ritmo calmo, ambiente)
+# Synth escolhido: piano (timbre suave e melódico)
+
+use_bpm 80          # define o ritmo
+use_synth :piano    # define o instrumento (sintetizador de piano)
+
+# --- INTRODUÇÃO MELÓDICA ---
+
+play :C4, sustain: 0.3  # toca a nota Dó (C4) rapidamente
+sleep 0.5               # pausa de meio segundo
+
+play :E4, sustain: 0.3  # toca Mi (E4), dá continuidade à melodia
+sleep 0.5
+
+play :E4, sustain: 1.5  # repete Mi, agora mais longa
+sleep 0.5
+
+play :E4, sustain: 1.5  # repete novamente Mi
+sleep 0.5
+
+play :D4                # toca Ré (D4), breve passagem
+sleep 0.5
+
+play :D4, sustain: 1.5  # Ré prolongado, encerrando a introdução
+
+# --- PARTE COM ACORDES GRAVES (harmonia de base) ---
+
+# Acorde 1 — A menor com F na base
+in_thread do
+  play :A3, sustain: 6  # nota A3 (Lá), corpo do acorde
+  play :F1, sustain: 6  # nota F1 (Fá grave)
+  play :F2, sustain: 6  # nota F2 (Fá médio grave)
+end
+
+# espera antes da próxima nota solo
+sleep 1.5
+
+# --- Notas da melodia sobre o acorde A-F ---
+
+play :C4, sustain: 1.5  # Dó (C4), nota suave sobre o acorde
+sleep 0.5
+
+play :E4, sustain: 0.5  # Mi curto, transição
+sleep 0.5
+
+play :E4, sustain: 1.5  # Mi mais longo, reforçando a melodia
+sleep 0.5
+
+play :G4, sustain: 0.5  # Sol curto, nota de brilho
+sleep 0.5
+
+play :G4, sustain: 3    # Sol sustentado, encerra o primeiro acorde
+sleep 1
+
+# --- Acorde 2 — Sol maior (G) nas notas graves ---
+in_thread do
+  play :G1, sustain: 6  # Sol grave
+  play :G2, sustain: 6  # Sol médio grave
+  play :G3, sustain: 6  # Sol médio
+end
+
+sleep 0.9
+
+# --- Melodia sobre o acorde de Sol ---
+
+play :B4, sustain: 1.5  # Si (B4), dá leveza e transição
+sleep 0.5
+
+play :A3, sustain: 1.5  # Lá (A3), nota de passagem mais suave
+sleep 0.5
+
+play :E4, sustain: 0.5  # Mi (E4), breve acento
+sleep 0.5
+
+play :E4, sustain: 1.5  # Mi longo, mantém o tom etéreo
+sleep 0.5
+
+play :G4, sustain: 0.5  # Sol curto, realce final
+sleep 0.5
+
+play :G4, sustain: 4    # Sol longo, fecha o segundo acorde
+sleep 1
+
+# --- Acorde 3 — Ré maior (D) nas notas graves ---
+in_thread do
+  play :D1, sustain: 6  # Ré grave
+  play :D2, sustain: 6  # Ré médio grave
+  play :A3, sustain: 6  # Lá médio, quinta do acorde
+end
+
+# (a partir daqui, pode continuar com novas seções ou repetir)
