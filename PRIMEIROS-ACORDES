@@ -1,0 +1,58 @@
+# 🎵 PRIMEIRO TESTE — Criação musical no Sonic Pi
+# Autor: Thauã Marcelo
+# Estilo: Lo-fi / Chill experimental
+# BPM (batidas por minuto): 80
+# Efeitos usados: reverb + eco para um som mais espacial
+
+use_bpm 80  # define o ritmo geral da música (80 bpm = ritmo suave)
+
+# adiciona efeitos globais (reverb e eco) para dar profundidade ao som
+with_fx :reverb, mix: 0.6, room: 0.9 do
+  with_fx :echo, phase: 0.5, decay: 4 do
+    
+    # --- 🔊 BEAT (bateria) ---
+    live_loop :beat do
+      # toca bumbo eletrônico (kick)
+      sample :bd_haus, amp: 2
+      sleep 1
+      # toca caixa (snare)
+      sample :sn_dolf, amp: 1.2
+      sleep 1
+    end
+    
+    # --- 🎸 BAIXO (linha de base) ---
+    live_loop :bass do
+      use_synth :fm  # som de baixo sintético
+      play :g2, release: 0.5  # nota Sol grave
+      sleep 2
+      play :f2, release: 0.5  # nota Fá
+      sleep 2
+      play :eb2, release: 0.5 # nota Mi♭
+      sleep 2
+      play :d2, release: 0.5  # nota Ré
+      sleep 2
+    end
+    
+    # --- 🎹 ACORDES (harmonia) ---
+    live_loop :chords do
+      use_synth :piano
+      play_chord [:g3, :bb3, :d4], sustain: 1.5  # acorde Gm (Sol menor)
+      sleep 2
+      play_chord [:f3, :a3, :c4], sustain: 1.5   # acorde F (Fá maior)
+      sleep 2
+      play_chord [:eb3, :g3, :bb3], sustain: 1.5 # acorde E♭ (Mi bemol maior)
+      sleep 2
+      play_chord [:d3, :f3, :a3], sustain: 1.5   # acorde Dm (Ré menor)
+      sleep 2
+    end
+    
+    # --- 🎵 MELODIA (sintetizador suave) ---
+    live_loop :melodia do
+      use_synth :hollow  # timbre oco e atmosférico
+      # toca a sequência de notas com tempos diferentes
+      play_pattern_timed [:d4, :f4, :g4, :bb4, :g4], [0.5, 0.5, 1, 0.5, 1.5], amp: 0.8
+      sleep 2  # pausa antes de repetir a melodia
+    end
+    
+  end
+end
