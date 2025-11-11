@@ -1,0 +1,99 @@
+# ================================================================
+# 🎶 BERGHAIN – Rosalía (reinterpretação em Sonic Pi)
+# ---------------------------------------------------------------
+# Autor: Thauã Marcelo
+# Plataforma: Sonic Pi
+# BPM base: 214
+# Estilo: Experimental / Synth / Cordas
+# ================================================================
+
+use_bpm 214
+use_synth :hollow  # Pode testar :blade, :prophet ou :fm para timbres alternativos
+
+# ----------------------
+# 🎼 Funções
+# ----------------------
+
+# Mão direita: toca acordes sustentados em thread separada
+define :acorde_direita do |notas|
+  in_thread do
+    play_chord notas, attack: 0.2, sustain: 3, release: 0.8, amp: 1.9
+    sleep 0.5
+  end
+end
+
+# Mão esquerda: sequência de notas rápidas que criam base rítmica
+define :mao_esquerda do |sequencia, tempo|
+  sequencia.each do |n|
+    play n, sustain: 0.15, release: 0.2, amp: 1.1
+    sleep tempo
+  end
+end
+
+# ================================================================
+# 🔹 SEÇÕES
+# ================================================================
+
+# ----------------------
+# 1️⃣ PRIMEIRA SEÇÃO – D F A
+# ----------------------
+acorde_direita [:D3, :F3, :A3]   # Acorde RE–FA–LA
+mao_esquerda [:D5, :A4, :D5, :E5, :D5, :A4, :E5, :A5, :D6, :A5, :D6, :A5, :D6, :A5], 0.3
+sleep 1
+
+# ----------------------
+# 2️⃣ SEGUNDA SEÇÃO – G D As
+# ----------------------
+acorde_direita [:G3, :D4, :As4]  # Acorde SOL–RE–LÁ♯
+mao_esquerda [:E5, :D5, :As4, :G5, :As4, :G5, :D6, :G5, :As4], 0.3
+sleep 1
+
+# ----------------------
+# 3️⃣ TERCEIRO ACORDE – DIREITA + ESQUERDA
+# ----------------------
+acorde_direita [:A2, :E3, :Cs4]  # Lá maior (com Dó sustenido)
+mao_esquerda [
+  :G5, :A5, :E5, :A5, :E5, :A5,
+  :E5, :E5, :F5, :G5, :E5, :G5, :E5, :Cs5, :A4, :Cs5
+], 0.3
+
+# ----------------------
+# 4️⃣ QUARTO ACORDE – DIREITA + ESQUERDA
+# ----------------------
+acorde_direita [:D3, :F3, :A3]  # Ré menor
+mao_esquerda [
+  :E5, :D5, :A4, :D5, :A4, :E5, :D5, :E5, :A5, :D6, :A5, :D6,
+  :A5, :E5, :D5, :D5, :D5, :D5
+], 0.3
+
+# ----------------------
+# 5️⃣ QUINTO ACORDE – DIREITA + ESQUERDA
+# ----------------------
+acorde_direita [:D3, :F3, :A3]
+mao_esquerda [:D5, :D5, :E5, :A5, :E5, :D5, :E5, :A5, :E5], 0.5
+
+# ----------------------
+# 6️⃣ SEXTO ACORDE – DIREITA + ESQUERDA
+# ----------------------
+acorde_direita [:G2, :D3, :As3]  # Sol com Ré e Lá#
+mao_esquerda [
+  :D5, :G5, :As5, :G5, :D5, :G5, :As5, :G5
+], 0.5
+
+# ----------------------
+# 7️⃣ SÉTIMO ACORDE – DIREITA + ESQUERDA
+# ----------------------
+acorde_direita [:A2, :E3, :Cs4]  # Lá maior
+mao_esquerda [
+  :Cs5, :E5, :A5, :E5, :Cs5, :E5, :A5, :E5, :D5
+], 0.5
+
+# ----------------------
+# 8️⃣ OITAVO ACORDE – DIREITA + ESQUERDA
+# ----------------------
+acorde_direita [:D3, :E3, :A3]  # Ré menor (variação com Mi)
+mao_esquerda [:D5, :E5, :A5, :E5], 0.5
+
+# ================================================================
+# 🎧 Fim da estrutura
+# ================================================================
