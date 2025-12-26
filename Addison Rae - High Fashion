@@ -1,0 +1,36 @@
+# High Fashion - Addison Rae (inspired)
+# Sonic Pi
+# BPM: 50
+
+use_bpm 50
+
+# =========================
+# PROGRESSÃO DE ACORDES
+# =========================
+
+chords = [
+  chord(:eb3, :major),   # EbMaj
+  [:g3, :d4, :a4],       # G5add9
+  [:c3, :g3, :d4],       # C5add9
+  [:g3, :d4, :a4],       # G5add9
+  chord(:a3, :major),    # AMaj
+  chord(:bb3, :major),   # BbMaj
+  chord(:eb3, :major),   # EbMaj
+  chord(:c3, :minor),    # Cmin
+  chord(:a3, :major),    # AMaj
+  chord(:bb3, :major)    # BbMaj
+]
+
+# =========================
+# INSTRUMENTAL
+# =========================
+
+live_loop :instrumental do
+  use_synth :saw
+
+  chords.each do |ch|
+    play_chord ch, sustain: 1, release: 0
+    cue :beat
+    sleep 1
+  end
+end
